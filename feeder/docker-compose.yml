@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+name: streamplace-feeder
+
+services:
+  feeder:
+    image: ghcr.io/azuracast/azuracast:latest
+    container_name: streamplace-feeder
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - /etc/streamplace/feeder.env
+    environment:
+      SRC: http://127.0.0.1:8000/radio.mp3
+      AZ_HOST: stream.versionradio.live
+    volumes:
+      - /etc/streamplace/cover.png:/cover.png:ro
+      - /opt/streamplace-feeder/entrypoint.sh:/entrypoint.sh:ro
+      - /opt/streamplace-feeder/artfeeder.py:/opt/streamplace-feeder/artfeeder.py:ro
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

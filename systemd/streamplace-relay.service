@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+[Unit]
+Description=Streamplace OBS relay supervisor (MediaMTX -> Streamplace + AzuraCast)
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/streamplace-relay/supervisor.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

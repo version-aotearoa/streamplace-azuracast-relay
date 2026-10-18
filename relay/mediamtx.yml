@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+logLevel: info
+logDestinations: [stdout]
+
+moq: no
+rtsp: yes
+rtspAddress: 127.0.0.1:8554
+rtspTransports: [tcp]
+hls: no
+webrtc: no
+srt: no
+
+rtmp: yes
+rtmpAddress: 127.0.0.1:1936
+rtmpsAddress: :1935
+rtmpEncryption: "optional"
+rtmpServerCert: /certs/fullchain.pem
+rtmpServerKey: /certs/privkey.pem
+
+api: yes
+apiAddress: 127.0.0.1:9997
+
+paths:
+  live/dj-REDACTED:   # real path in /etc/streamplace/relay.env
+  live/rehearsal:

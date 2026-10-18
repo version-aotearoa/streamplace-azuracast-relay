@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+name: streamplace-relay
+
+services:
+  ingest:
+    image: bluenviron/mediamtx:latest
+    container_name: streamplace-ingest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /opt/streamplace-relay/mediamtx.yml:/mediamtx.yml:ro
+      - /etc/streamplace/tls:/certs:ro
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}

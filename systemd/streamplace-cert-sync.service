@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+[Unit]
+Description=Mirror AzuraCast ACME cert into the Streamplace ingest
+[Service]
+Type=oneshot
+ExecStart=/opt/streamplace-relay/sync-cert.sh
