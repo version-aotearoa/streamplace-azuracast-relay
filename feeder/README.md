@@ -109,6 +109,8 @@ Operate:
 
 Rollback: `systemctl disable --now streamplace-relay` then start the radio feeder.
 
+See [docs/dj-obs-quickstart.md](../docs/dj-obs-quickstart.md) for the DJ-facing OBS walkthrough.
+
 ## Operate
 
     cd /opt/streamplace-feeder
