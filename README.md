@@ -93,6 +93,9 @@ docker compose -f /opt/streamplace-feeder/docker-compose.yml up -d --force-recre
 
 ## DJ / OBS settings
 
+A DJ-facing walkthrough lives in [docs/dj-obs-quickstart.md](docs/dj-obs-quickstart.md).
+
+
 ```
 Server:             rtmps://multistream.versionradio.live:1935/live
 Stream key:         dj-<hex>   (see relay.env; rotate with rotate-dj-key.sh)
