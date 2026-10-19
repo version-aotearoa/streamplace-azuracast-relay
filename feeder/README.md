@@ -109,6 +109,19 @@ Operate:
 
 Rollback: `systemctl disable --now streamplace-relay` then start the radio feeder.
 
+## Watchdog
+
+`/opt/streamplace-feeder/watchdog.py` (systemd `streamplace-feeder-watchdog`)
+checks every 30 s that the station mount still has a reader. ffmpeg survives an
+AzuraCast restart with a dead input and keeps encoding silence, which looks live
+on Streamplace; two consecutive checks with no reader restart the feeder (5 min
+cooldown).
+
+It stands down when the OBS fan-out owns the output, and when the feeder is
+stopped by the relay supervisor.
+
+    journalctl -u streamplace-feeder-watchdog -f
+
 See [docs/dj-obs-quickstart.md](../docs/dj-obs-quickstart.md) for the DJ-facing OBS walkthrough.
 
 ## Operate

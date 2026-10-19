@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+[Unit]
+Description=Restart the radio feeder when its Icecast input goes stale
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/streamplace-feeder/watchdog.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
